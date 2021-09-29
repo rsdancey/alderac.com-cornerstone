@@ -1,0 +1,112 @@
+---
+products:
+    new:
+        limit: {{theme_settings.homepage_new_products_count}}
+    featured:
+        limit: {{theme_settings.homepage_featured_products_count}}
+    top_sellers:
+        limit: {{theme_settings.homepage_top_products_count}}
+carousel: {{theme_settings.homepage_show_carousel}}
+blog:
+    recent_posts:
+        limit: {{theme_settings.homepage_blog_posts_count}}
+---
+{{#partial "hero"}}
+    {{{region name="home_below_menu"}}}
+    {{#and carousel carousel.slides.length}}
+        {{> components/carousel arrows=theme_settings.homepage_show_carousel_arrows play_pause_button=theme_settings.homepage_show_carousel_play_pause_button}}
+    {{/and}}
+    {{{region name="home_below_carousel"}}}
+{{/partial}}
+
+{{#partial "page"}}
+
+    {{#each shipping_messages}}
+        {{> components/common/alert/alert-info message}}
+    {{/each}}
+
+<div class="main full">
+    {{#if products.featured}}
+        {{> components/products/featured products=products.featured columns=theme_settings.homepage_featured_products_column_count}}
+    {{/if}}
+    {{{region name="home_below_featured_products"}}}
+
+    {{#if products.top_sellers}}
+        {{> components/products/top products=products.top_sellers columns=theme_settings.homepage_top_products_column_count}}
+    {{/if}}
+    {{{region name="home_below_top_products"}}}
+
+    {{#if products.new}}
+        {{> components/products/new products=products.new columns=theme_settings.homepage_new_products_column_count}}
+    {{/if}}
+
+    <table align="center">
+        <!--        <tr>
+                    <td colspan="3" align="center">
+                        <a href="left-deal/"><img height="250px" width="250px" img src="https://alderacstore.com/product_images/uploaded_images/a-ad-graphic.png"></a>
+                        <a href="right-deal/"><img height="250px" width="250px" img src="https://alderacstore.com/product_images/uploaded_images/b-ad-graphic.png"></a>
+                    </td>
+                </tr>
+        -->
+        <!--        <tr>
+                    <td colspan="3">
+                        <center>
+                            <h3>
+                                Orders placed after December 14th may not arrive before Christmas. Selecting a shipping option for 2-day or overnight delivery will not guarantee delivery
+                            </h3>
+                        </center>
+                    </td>
+                </tr>
+        -->
+        <tr>
+            <td colspan="3">
+                <center>
+                    <h1>
+                        Product Categories
+                    </h1>
+                </center>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding:10px" colspan=3 align="center"><a href="calico"><img src="{{cdn 'assets/img/alderac/Calico_button.png'}}" width="300px"></a></td>
+
+            <!-- <a href="aeg-fun-club"><img src="{{cdn 'assets/img/alderac/fun_club_button.png'}}" width="300px"></a> -->
+
+        </tr>
+
+        <tr align="center">
+            <td style="padding:10px"><a href="smash-up"><img src="{{cdn 'assets/img/alderac/smashup_button.jpg'}}" width="300px"></a></td>
+            <td style="padding:10px;"><a href="space-base-line"><img src="{{cdn 'assets/img/alderac/spacebasebutton.png'}}" width="300px"></a></td>
+            <td style="padding:10px;"><a href="tiny-towns-products"><img src="{{cdn 'assets/img/alderac/tinytownsbutton.png'}}" width="300px"></a></td>
+        </tr>
+        <tr align="center">
+            <td style="padding:10px;"><a href="cat-lady-products"><img src="{{cdn 'assets/img/alderac/CatLady_button.png'}}" width="300px"></a></td>
+            <td style="padding:10px;"><a href="ecos-first-continent"><img src="{{cdn 'assets/img/alderac/Ecos_button.png'}}" width="300px"></a></td>
+            <td style="padding:10px;"><a href="mystic-vale"><img src="{{cdn 'assets/img/alderac/mysticvale_button.jpg'}}" width="300px"></a></td>
+
+        </tr>
+        <tr align="center">
+            <td style="padding:10px;"><a href="istanbul"><img src="{{cdn 'assets/img/alderac/istanbul_button.jpg'}}" width="300px"></a></td>
+            <td style="padding:10px;"><a href="war-chest-products"><img src="{{cdn 'assets/img/alderac/WarChestbutton.png'}}" width="300px"></a></td>
+            <td style="padding:10px;"><a href="the-captain-is-dead-series"><img src="{{cdn 'assets/img/alderac/TCID_button.png'}}" width="300px"></a></td>
+        </tr>
+        <tr align="center">
+            <td style="padding:10px;"><a href="thunderstone"><img src="{{cdn 'assets/img/alderac/thunderstonequest_button.png'}}" width="300px"></a></td>
+            <td style="padding:10px;"><a href="edge-of-darkness"><img src="{{cdn 'assets/img/alderac/edgeofdarknessbutton.png'}}" width="300px"></a></td>
+            <td style="padding:10px" colspan=3 align="center"><a href="santa-monica"><img src="{{cdn 'assets/img/alderac/santa_monica_button.png'}}" width="300px"></a></td>
+        </tr>
+        <tr align="center">
+            <td style="padding:10px;"><a href="board-games"><img src="{{cdn 'assets/img/alderac/boardgames_button.png'}}" width="300px"></a></td>
+            <td style="padding:10px;"><a href="card-games"><img src="{{cdn 'assets/img/alderac/cardgames_button.png'}}" width="300px"></a></td>
+            <td style="padding:10px;"><a href="dice-games"><img src="{{cdn 'assets/img/alderac/dicegames_button.png'}}" width="300px"></a></td>
+        </tr>
+        <!--
+        <td style="padding:10px;"><a href="5-minute-fun"><img src="{{cdn 'assets/img/alderac/5minutefun_button.png'}}" width="300px"></a></td>
+        <td style="padding:10px;"><a href="big-in-japan"><img src="{{cdn 'assets/img/alderac/biginjapan_button.png'}}" width="300px"></a></td>
+        -->
+    </table>
+
+    {{{region name="home_below_new_products"}}}
+</div>
+{{/partial}}
+{{> layout/base}}
